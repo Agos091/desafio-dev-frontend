@@ -1,46 +1,119 @@
-# Desafio de programação para vaga de desenvolvedor front end
+# Weather App
 
-O intuito deste teste é avaliar seus conhecimentos técnicos e boas práticas em código. O teste consiste em criar uma página simples com consumo de API.
+## Descrição do Projeto
 
-Siga os requisitos obrigatórios, mas não se atenha somente a eles. Use sua criatividade!
+Este projeto é um aplicativo de previsão do tempo desenvolvido com React, que permite ao usuário:
 
-# Descrição do projeto
+- Buscar o clima atual de qualquer cidade.
+- Visualizar temperaturas mínimas e máximas, precipitação e velocidade do vento.
+- Adicionar cidades aos favoritos para acesso rápido.
+- Obter previsão do tempo para os próximos dois dias.
+- Visualizar o clima em cinco capitais globais.
 
-Construa uma página simples que consuma uma API de previsão do tempo e retorne as informações de temperatura atual, mínima e máxima para o dia (ºC).
+A interface é responsiva e adaptada tanto para dispositivos móveis quanto para desktops.
 
-Crie uma interface que aceite o input de uma cidade, liste as cidades que se enquadrem na sua busca, e ao selecioná-la, retorne as informações solicitadas.
+---
 
-Você pode utilizar a API que seja mais conveniente para o resgate das informações. Como sugestão, o [OpenWeatherMap](https://openweathermap.org/api) é uma escolha que satisfaz os requisitos do desafio.
+## Funcionalidades Principais
 
+1. **Busca de Clima por Cidade**:
 
-**Requisitos Obrigatórios:**
+   - Permite ao usuário buscar informações detalhadas de uma cidade específica.
 
-1. Utilizar React com Material UI ou Chakra UI.
-2. Utilizar tipografia Montserrat.
-3. Possuir as versões desktop e mobile. É fortemente encorajado que seja mobile first.
-4. Utilizar apenas bibliotecas livres ou gratuitas, e deve ser implementada apenas com Javascript e Typescript.
-5. Utilizar testes (React Testing Lib, Cypress, etc).
-6. Conter o arquivo README.md, descrevendo detalhadamente o projeto e seu setup. O arquivo deve identificar todas as etapas e dependências para a instância da aplicação.
+2. **Cidades Favoritas**:
 
-**Sua aplicação web não precisa:**
+   - Adicionar e remover cidades favoritas.
+   - As cidades favoritas são salvas no localStorage para persistência.
 
-1. Lidar com autenticação ou autorização interna (pontos extras se ela fizer, mais pontos extras se a autenticação for feita via OAuth).
+3. **Previsão para os Próximos Dois Dias**:
 
-**Bônus na Avaliação!**
+   - Mostra a previsão para os dois dias seguintes, incluindo temperaturas mínimas, máximas, precipitação e vento.
 
-1. Crie uma lista persistente de cidades favoritas, preferencialmente já apresentando algumas das informações de previsão do tempo em tela ao acessar a página.
-2. Traga mais informações: precipitação, vento, previsão para os próximos dias... Pense também na interface para apresentar estas informações.
-3. Hospede sua aplicação em algum serviço gratuito (Vercel, AWS Free Tier, etc).
-4. Crie layouts dinâmicos baseados na localização (por exemplo, backgrounds de acordo com o tempo atual, ou modo diurno/noturno baseado no horário de acesso à página). Solte sua criatividade e mostre um pouco das suas habilidades de UI/UX.
+4. **Clima nas Capitais Globais**:
 
+   - Exibe o clima atual de cinco capitais: Londres, Tóquio, Nova York, Paris e Sydney.
 
-# Instruções de entrega do desafio
+5. **Interface Responsiva**:
+   - Adaptada para diferentes dispositivos.
 
-1. Faça um fork deste projeto para sua conta no Github.
-2. Em seguida, implemente o projeto neste repositório, seguindo suas especificações.
-3. Por fim, envie o link do seu projeto para seu contato Manchester Investimentos com cópia para rh@manchesterinvest.com.br.
+---
 
-# Referência
+## Tecnologias Utilizadas
 
-Este teste técnico foi baseado no seguinte desafio: 
-https://github.com/1STi/desafio-frontend/
+- **React**: Framework principal para o desenvolvimento da interface.
+- **Material UI**: Biblioteca para componentes estilizados.
+- **Axios**: Biblioteca para realizar chamadas à API.
+- **OpenWeatherMap API**: Fonte dos dados climáticos.
+- **TypeScript**: Para garantir segurança no código.
+- **CSS Responsivo**: Garantia de uma boa experiência em dispositivos móveis e desktops.
+
+---
+
+## Estrutura do Projeto
+
+```
+/public
+  - clear-sky.png (ícone utilizado no projeto)
+
+src/
+  - components/
+    - FavoritesList.tsx (Lista de cidades favoritas)
+    - Forecast.tsx (Previsão dos próximos dois dias)
+    - SearchBar.tsx (Barra de busca)
+    - WeatherCard.tsx (Exibição de clima atual)
+    - WorldCapitalsWeather.tsx (Clima em capitais)
+  - services/
+    - weatherApi.ts (Serviço para chamadas à API)
+  - styles/
+    - global.css (Estilo global do projeto)
+  - App.tsx (Componente principal do aplicativo)
+  - index.tsx (Ponto de entrada do React)
+```
+
+---
+
+## Como Rodar o Projeto
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/weather-app.git
+   cd weather-app
+   ```
+
+2. Instale as dependências:
+
+   ```bash
+   yarn install
+   ```
+
+3. Adicione sua chave de API do OpenWeatherMap:
+
+   - No arquivo `src/services/weatherApi.ts`, substitua `SUA_API_KEY` pela sua chave.
+
+4. Rode o aplicativo em modo de desenvolvimento:
+
+   ```bash
+   yarn start
+   ```
+
+5. Abra no navegador:
+   - Acesse `http://localhost:3000`.
+
+---
+
+## Considerações de Design
+
+- O aplicativo utiliza uma paleta de cores inspirada no céu.
+- Os componentes têm bordas arredondadas e efeitos de sombra para um visual moderno.
+- O layout foi projetado para ser harmonioso e intuitivo.
+
+---
+
+## Autor
+
+Desenvolvido por Agos Dalcin Rufino . Para dúvidas ou sugestões, entre em contato:
+
+- **Email**: dalcinrufino.a@gmail.com
+
+---
