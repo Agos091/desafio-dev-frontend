@@ -1,4 +1,5 @@
 import React from 'react';
+import { WiThermometer, WiStrongWind, WiRaindrop } from 'react-icons/wi';
 
 interface ForecastProps {
   forecast: any[];
@@ -33,9 +34,18 @@ const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
             }}
           >
             <span>{new Date(period.dt * 1000).toLocaleDateString()}</span>
-            <span>🌡️ {period.main.temp}°C</span>
-            <span>💨 {period.wind.speed} m/s</span>
-            <span>☔ {Math.round(period.pop * 100)}%</span>
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <WiThermometer size={20} style={{ marginRight: '5px' }} />
+              {period.main.temp}°C
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <WiStrongWind size={20} style={{ marginRight: '5px' }} />
+              {period.wind.speed} m/s
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <WiRaindrop size={20} style={{ marginRight: '5px' }} />
+              {Math.round(period.pop * 100)}%
+            </span>
           </li>
         ))}
       </ul>
