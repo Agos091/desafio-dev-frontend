@@ -17,7 +17,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
   onAddFavorite,
   isFavorite,
 }) => {
-  const weatherCondition = weather.weather[0]?.main; 
+  const weatherCondition = weather.weather[0]?.main;
   const weatherIcon = getWeatherIcon(weatherCondition);
 
   return (
@@ -37,12 +37,19 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
           {weather.name}
           <IconButton
             onClick={onAddFavorite}
-            style={{ color: 'gold', marginLeft: '10px' }}
+            style={{ color: isFavorite ? 'gold' : 'white', marginLeft: '10px' }}
+            aria-label={
+              isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
+            }
           >
             {isFavorite ? <StarIcon /> : <StarBorderIcon />}
           </IconButton>
         </Typography>
-        <Typography variant="h6" style={{ fontSize: '2rem' }}>
+        <Typography
+          variant="h6"
+          style={{ fontSize: '2rem' }}
+          data-testid="weather-icon"
+        >
           {weatherIcon}
         </Typography>
         <Typography variant="body2">
