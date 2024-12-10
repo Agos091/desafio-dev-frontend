@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getWeatherByCity } from '../services/weatherApi';
-import { getWeatherIcon } from '../utils/weatherIcons';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import CloudIcon from '@mui/icons-material/Cloud';
+import OpacityIcon from '@mui/icons-material/Opacity';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 const capitals = ['London', 'Tokyo', 'New York', 'Paris', 'Sydney'];
 
@@ -9,7 +12,6 @@ interface CapitalWeather {
   tempMax: number;
   tempMin: number;
   condition: string;
-  icon: string; 
 }
 
 const WorldCapitalsWeather: React.FC = () => {
@@ -27,7 +29,6 @@ const WorldCapitalsWeather: React.FC = () => {
             tempMax: data.main.temp_max,
             tempMin: data.main.temp_min,
             condition: data.weather[0]?.main || 'Unknown',
-            icon: getWeatherIcon(data.weather[0]?.main || 'Unknown'),
           });
         }
         setCapitalsWeather(weatherData);
@@ -40,14 +41,29 @@ const WorldCapitalsWeather: React.FC = () => {
     fetchCapitalsWeather();
   }, []);
 
+  const getWeatherIcon = (condition: string) => {
+    switch (condition) {
+      case 'Clear':
+        return <WbSunnyIcon />;
+      case 'Clouds':
+        return <CloudIcon />;
+      case 'Rain':
+        return <OpacityIcon />;
+      case 'Snow':
+        return <AcUnitIcon />;
+      default:
+        return <CloudIcon />;
+    }
+  };
+
   return (
     <div
       style={{
-        padding: '15px',
+        padding: '10px',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
         borderRadius: '10px',
         color: 'white',
-        maxWidth: '600px',
+        maxWidth: '400px',
         margin: '20px auto',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
         backdropFilter: 'blur(10px)',
@@ -74,12 +90,10 @@ const WorldCapitalsWeather: React.FC = () => {
               }}
             >
               <span>
-                <strong>{capital.city}</strong> {capital.icon}
+                {capital.city} {getWeatherIcon(capital.condition)}
               </span>
               <span>
-                <em>
-                  Min: {capital.tempMin}°C / Max: {capital.tempMax}°C
-                </em>
+                {capital.tempMin}°C / {capital.tempMax}°C
               </span>
             </li>
           ))}

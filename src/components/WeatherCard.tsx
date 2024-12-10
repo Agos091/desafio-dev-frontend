@@ -4,7 +4,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { getWeatherIcon } from '../utils/weatherIcons';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import CloudIcon from '@mui/icons-material/Cloud';
+import OpacityIcon from '@mui/icons-material/Opacity';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 interface WeatherCardProps {
   weather: any;
@@ -18,7 +21,21 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
   isFavorite,
 }) => {
   const weatherCondition = weather.weather[0]?.main;
-  const weatherIcon = getWeatherIcon(weatherCondition);
+
+  const getWeatherIcon = (condition: string) => {
+    switch (condition) {
+      case 'Clear':
+        return <WbSunnyIcon data-testid="weather-icon" />;
+      case 'Clouds':
+        return <CloudIcon data-testid="weather-icon" />;
+      case 'Rain':
+        return <OpacityIcon data-testid="weather-icon" />;
+      case 'Snow':
+        return <AcUnitIcon data-testid="weather-icon" />;
+      default:
+        return <CloudIcon data-testid="weather-icon" />;
+    }
+  };
 
   return (
     <Card
@@ -37,20 +54,16 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
           {weather.name}
           <IconButton
             onClick={onAddFavorite}
-            style={{ color: isFavorite ? 'gold' : 'white', marginLeft: '10px' }}
+            style={{ color: 'gold', marginLeft: '10px' }}
             aria-label={
-              isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'
+              isFavorite ? 'remover dos favoritos' : 'adicionar aos favoritos'
             }
           >
             {isFavorite ? <StarIcon /> : <StarBorderIcon />}
           </IconButton>
         </Typography>
-        <Typography
-          variant="h6"
-          style={{ fontSize: '2rem' }}
-          data-testid="weather-icon"
-        >
-          {weatherIcon}
+        <Typography variant="h6" style={{ fontSize: '2rem' }}>
+          {getWeatherIcon(weatherCondition)}
         </Typography>
         <Typography variant="body2">
           Temperatura: {weather.main.temp}°C
