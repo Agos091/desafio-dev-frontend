@@ -1,119 +1,152 @@
-# Weather App
+# Weather App - Desafio de Programação Front-End
 
 ## Descrição do Projeto
 
-Este projeto é um aplicativo de previsão do tempo desenvolvido com React, que permite ao usuário:
+Este projeto é uma aplicação web de previsão do tempo desenvolvida como parte do desafio técnico para a vaga de desenvolvedor front-end. A aplicação permite buscar informações climáticas, como:
 
-- Buscar o clima atual de qualquer cidade.
-- Visualizar temperaturas mínimas e máximas, precipitação e velocidade do vento.
-- Adicionar cidades aos favoritos para acesso rápido.
-- Obter previsão do tempo para os próximos dois dias.
-- Visualizar o clima em cinco capitais globais.
+- Temperatura atual, mínima e máxima do dia.
+- Precipitação e vento.
+- Previsão para os próximos dois dias.
+- Ícones representando a condição climática (ensolarado, nublado, chuvoso, etc.).
+- Lista persistente de cidades favoritas.
+- Informações climáticas das principais capitais do mundo.
 
-A interface é responsiva e adaptada tanto para dispositivos móveis quanto para desktops.
+A aplicação foi construída utilizando **React** e **Material UI**, com atenção ao design responsivo (mobile first).
 
 ---
 
-## Funcionalidades Principais
+## Funcionalidades
 
-1. **Busca de Clima por Cidade**:
+1. **Busca de Previsão do Tempo:**
+   - Permite buscar informações climáticas de qualquer cidade do mundo.
+   - Exibe temperatura atual, mínima, máxima, precipitação e vento.
 
-   - Permite ao usuário buscar informações detalhadas de uma cidade específica.
+2. **Lista de Favoritos:**
+   - Permite adicionar cidades à lista de favoritos.
+   - Persiste os dados no `localStorage`, garantindo que a lista seja mantida ao recarregar a página.
 
-2. **Cidades Favoritas**:
+3. **Capitais do Mundo:**
+   - Exibe informações climáticas para as cinco principais capitais: Londres, Tóquio, Nova York, Paris e Sydney.
 
-   - Adicionar e remover cidades favoritas.
-   - As cidades favoritas são salvas no localStorage para persistência.
+4. **Responsividade:**
+   - Interface otimizada para desktop e mobile.
 
-3. **Previsão para os Próximos Dois Dias**:
+5. **Design e UX:**
+   - Utilização da tipografia Montserrat.
+   - Background dinâmico inspirado em condições climáticas.
 
-   - Mostra a previsão para os dois dias seguintes, incluindo temperaturas mínimas, máximas, precipitação e vento.
-
-4. **Clima nas Capitais Globais**:
-
-   - Exibe o clima atual de cinco capitais: Londres, Tóquio, Nova York, Paris e Sydney.
-
-5. **Interface Responsiva**:
-   - Adaptada para diferentes dispositivos.
+6. **Testes Automatizados:**
+   - Cobertura de testes para componentes principais utilizando React Testing Library.
 
 ---
 
 ## Tecnologias Utilizadas
 
-- **React**: Framework principal para o desenvolvimento da interface.
-- **Material UI**: Biblioteca para componentes estilizados.
-- **Axios**: Biblioteca para realizar chamadas à API.
-- **OpenWeatherMap API**: Fonte dos dados climáticos.
-- **TypeScript**: Para garantir segurança no código.
-- **CSS Responsivo**: Garantia de uma boa experiência em dispositivos móveis e desktops.
+- **Linguagens e Frameworks:**
+  - React com TypeScript
+  - Material UI
+  - Axios para consumo de API
+
+- **Testes:**
+  - React Testing Library
+
+- **API de Clima:**
+  - [OpenWeatherMap API](https://openweathermap.org/api)
 
 ---
 
-## Estrutura do Projeto
+## Instalação e Execução
 
-```
-/public
-  - clear-sky.png (ícone utilizado no projeto)
+### Requisitos
+- Node.js v16 ou superior
+- Yarn ou NPM
 
-src/
-  - components/
-    - FavoritesList.tsx (Lista de cidades favoritas)
-    - Forecast.tsx (Previsão dos próximos dois dias)
-    - SearchBar.tsx (Barra de busca)
-    - WeatherCard.tsx (Exibição de clima atual)
-    - WorldCapitalsWeather.tsx (Clima em capitais)
-  - services/
-    - weatherApi.ts (Serviço para chamadas à API)
-  - styles/
-    - global.css (Estilo global do projeto)
-  - App.tsx (Componente principal do aplicativo)
-  - index.tsx (Ponto de entrada do React)
-```
-
----
-
-## Como Rodar o Projeto
+### Passos para Configuração
 
 1. Clone o repositório:
-
    ```bash
-   git clone https://github.com/seu-usuario/weather-app.git
-   cd weather-app
+   git clone https://github.com/Agos091/desafio-dev-frontend.git
+   cd desafio-dev-frontend
    ```
 
 2. Instale as dependências:
-
    ```bash
    yarn install
    ```
 
-3. Adicione sua chave de API do OpenWeatherMap:
+3. Configure a chave da API:
+   - Crie um arquivo `.env` na raiz do projeto.
+   - Adicione a seguinte linha:
+     ```env
+     REACT_APP_OPENWEATHER_API_KEY=SUA_API_KEY
+     ```
 
-   - No arquivo `src/services/weatherApi.ts`, substitua `SUA_API_KEY` pela sua chave.
-
-4. Rode o aplicativo em modo de desenvolvimento:
-
+4. Execute o projeto:
    ```bash
    yarn start
    ```
 
-5. Abra no navegador:
-   - Acesse `http://localhost:3000`.
+5. Para criar o build de produção:
+   ```bash
+   yarn build
+   ```
 
 ---
 
-## Considerações de Design
+## Testes
 
-- O aplicativo utiliza uma paleta de cores inspirada no céu.
-- Os componentes têm bordas arredondadas e efeitos de sombra para um visual moderno.
-- O layout foi projetado para ser harmonioso e intuitivo.
+1. Para rodar os testes automatizados:
+   ```bash
+   yarn test
+   ```
+2. Testes incluídos:
+   - `SearchBar`: Verifica renderização, funcionalidade de busca e interação.
+   - `WeatherCard`: Testa a exibição de informações climáticas e interação com a lista de favoritos.
+
+---
+
+## Deploy
+
+O projeto foi implantado no Vercel. Você pode acessá-lo pelo link:
+[https://desafio-dev-frontend.vercel.app/](https://desafio-dev-frontend.vercel.app/)
+
+---
+
+## Estrutura de Pastas
+
+```
+/src
+  /components
+    SearchBar.tsx
+    WeatherCard.tsx
+    WorldCapitalsWeather.tsx
+  /services
+    weatherApi.ts
+  /utils
+    weatherIcons.ts
+  App.tsx
+  index.tsx
+/public
+  favicon.ico
+  clear-sky.png
+```
+
+---
+
+## Melhorias Futuras
+
+1. Implementar autenticação para salvar dados do usuário em uma base remota.
+2. Adicionar mais funcionalidades de previsão, como alertas climáticos.
+3. Melhorar a interface de usuário com transições mais suaves.
+
+---
+
+## Agradecimentos
+
+Agradeço pela oportunidade de participar deste desafio e espero que o projeto atenda às expectativas. Caso tenham dúvidas, estou à disposição para discutir o processo de desenvolvimento e melhorias futuras.
 
 ---
 
 ## Autor
 
-Desenvolvido por Agos Dalcin Rufino . Para dúvidas ou sugestões, entre em contato:
-
-- **Email**: dalcinrufino.a@gmail.com
-
----
+Desenvolvido por **Agos Dalcin**.
