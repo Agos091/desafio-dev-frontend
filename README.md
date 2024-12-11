@@ -131,15 +131,6 @@ O projeto foi implantado no Vercel. Você pode acessá-lo pelo link:
   clear-sky.png
 ```
 
----
-
-## Melhorias Futuras
-
-1. Implementar autenticação para salvar dados do usuário em uma base remota.
-2. Adicionar mais funcionalidades de previsão, como alertas climáticos.
-3. Melhorar a interface de usuário com transições mais suaves.
-
----
 
 ## Agradecimentos
 
