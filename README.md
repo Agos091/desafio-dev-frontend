@@ -108,7 +108,7 @@ A aplicação foi construída utilizando **React** e **Material UI**, com atenç
 ## Deploy
 
 O projeto foi implantado no Vercel. Você pode acessá-lo pelo link:
-[https://desafio-dev-frontend.vercel.app/](https://desafio-dev-frontend.vercel.app/)
+[https://agos-desafio-dev-frontend.vercel.app/](https://agos-desafio-dev-frontend.vercel.app/)
 
 ---
 
