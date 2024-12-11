@@ -63,19 +63,34 @@ const WorldCapitalsWeather: React.FC = () => {
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
         borderRadius: '10px',
         color: 'white',
-        maxWidth: '400px',
+        maxWidth: '100%',
         margin: '20px auto',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
         backdropFilter: 'blur(10px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '10px',
       }}
     >
-      <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>
+      <h3 style={{ textAlign: 'center', fontSize: '1.5rem' }}>
         Clima nas Principais Capitais
       </h3>
       {error ? (
-        <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>
+        <p style={{ color: 'red', textAlign: 'center', fontSize: '1rem' }}>
+          {error}
+        </p>
       ) : (
-        <ul style={{ listStyle: 'none', padding: 0 }}>
+        <ul
+          style={{
+            listStyle: 'none',
+            padding: 0,
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+          }}
+        >
           {capitalsWeather.map((capital) => (
             <li
               key={capital.city}
@@ -87,6 +102,7 @@ const WorldCapitalsWeather: React.FC = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                fontSize: '1rem',
               }}
             >
               <span>
