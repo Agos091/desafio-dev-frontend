@@ -40,13 +40,11 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
   return (
     <Card
       style={{
-        marginTop: '20px',
         padding: '10px',
-        textAlign: 'center',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
-        borderRadius: '15px',
+        borderRadius: '10px',
+        marginTop: '20px',
         color: 'white',
-        backdropFilter: 'blur(5px)',
       }}
     >
       <CardContent>

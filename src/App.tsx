@@ -35,7 +35,7 @@ const App = () => {
       const weatherData = await getWeatherByCity(city);
       const forecastData = await getForecastByCity(city);
       setWeather(weatherData);
-      setForecast(forecastData.list.slice(0, 5)); 
+      setForecast(forecastData.list.slice(0, 5));
     } catch (error: any) {
       console.error('Erro ao buscar o clima:', error);
       if (error.response && error.response.status === 404) {
@@ -59,17 +59,7 @@ const App = () => {
   };
 
   return (
-    <div
-      className="app-container"
-      style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-      }}
-    >
+    <div className="app-container" style={{ padding: '20px' }}>
       <header
         className="app-header"
         style={{
@@ -90,7 +80,6 @@ const App = () => {
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 700,
             fontSize: '2rem',
-            textAlign: 'center',
           }}
         >
           Weather App
@@ -99,13 +88,9 @@ const App = () => {
 
       <main
         className="app-content"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '20px',
-        }}
+        style={{ maxWidth: '1200px', margin: '0 auto' }}
       >
-        <section className="search-section" style={{ gridColumn: '1 / -1' }}>
+        <section className="search-section">
           <SearchBar city={city} setCity={setCity} onSearch={fetchWeather} />
           {error && <Alert severity="error">{error}</Alert>}
           {weather && (
@@ -127,16 +112,6 @@ const App = () => {
           <WorldCapitalsWeather />
         </section>
       </main>
-
-      <style>
-        {`
-          @media screen and (max-width: 768px) {
-            .app-content {
-              grid-template-columns: 1fr;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };

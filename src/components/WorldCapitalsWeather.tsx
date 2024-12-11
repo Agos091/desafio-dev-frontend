@@ -4,6 +4,8 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import CloudIcon from '@mui/icons-material/Cloud';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const capitals = ['London', 'Tokyo', 'New York', 'Paris', 'Sydney'];
 
@@ -59,18 +61,11 @@ const WorldCapitalsWeather: React.FC = () => {
   return (
     <div
       style={{
-        padding: '10px',
+        padding: '15px',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
         borderRadius: '10px',
+        marginTop: '20px',
         color: 'white',
-        maxWidth: '100%',
-        margin: '20px auto',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
-        backdropFilter: 'blur(10px)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '10px',
       }}
     >
       <h3 style={{ textAlign: 'center', fontSize: '1.5rem' }}>
@@ -108,8 +103,17 @@ const WorldCapitalsWeather: React.FC = () => {
               <span>
                 {capital.city} {getWeatherIcon(capital.condition)}
               </span>
-              <span>
-                {capital.tempMin}°C / {capital.tempMax}°C
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                }}
+              >
+                <ArrowDownwardIcon style={{ color: 'blue' }} />
+                {capital.tempMin}°C
+                <ArrowUpwardIcon style={{ color: 'red' }} />
+                {capital.tempMax}°C
               </span>
             </li>
           ))}
